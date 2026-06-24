@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
+import Platformer from '@/components/Platformer';
 import { MODS, SYNERGIES } from '@/data/mods';
 
 const BG = 'https://cdn.poehali.dev/projects/f3d3fe0b-e6d9-41a8-b2b5-900661d77bfc/files/b57d1907-ac98-4e5d-b52c-1e3ed14b6826.jpg';
 
-type Tab = 'main' | 'inventory' | 'crafting' | 'achievements' | 'mods' | 'settings';
+type Tab = 'main' | 'play' | 'inventory' | 'crafting' | 'achievements' | 'mods' | 'settings';
 
 const BLOCKS = [
   { id: 'grass', name: 'Трава', cls: 'blk-grass', count: 64 },
@@ -35,6 +36,7 @@ const ACHIEVEMENTS = [
 
 const NAV: { id: Tab; label: string; icon: string }[] = [
   { id: 'main', label: 'Главная', icon: 'Home' },
+  { id: 'play', label: 'Играть', icon: 'Gamepad2' },
   { id: 'inventory', label: 'Инвентарь', icon: 'Backpack' },
   { id: 'crafting', label: 'Крафтинг', icon: 'Hammer' },
   { id: 'achievements', label: 'Достижения', icon: 'Trophy' },
@@ -92,7 +94,8 @@ export default function Index() {
       </nav>
 
       <main className="max-w-6xl mx-auto px-4 py-8">
-        {tab === 'main' && <MainTab onPlay={() => setTab('inventory')} onMods={() => setTab('mods')} />}
+        {tab === 'main' && <MainTab onPlay={() => setTab('play')} onMods={() => setTab('mods')} />}
+        {tab === 'play' && <Platformer />}
         {tab === 'inventory' && <InventoryTab selected={selected} setSelected={setSelected} />}
         {tab === 'crafting' && <CraftingTab />}
         {tab === 'achievements' && <AchievementsTab />}
