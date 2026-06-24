@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 120 8% 9%;
+    --foreground: 80 30% 92%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -97,5 +97,102 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Rubik", sans-serif;
+  }
+}
+
+@layer utilities {
+  .pixelated {
+    image-rendering: pixelated;
+  }
+
+  /* Объёмная пиксельная рамка как кнопки/инвентарь в Minecraft */
+  .mc-border {
+    box-shadow:
+      inset -4px -4px 0 0 rgba(0, 0, 0, 0.45),
+      inset 4px 4px 0 0 rgba(255, 255, 255, 0.18);
+  }
+  .mc-border-sm {
+    box-shadow:
+      inset -3px -3px 0 0 rgba(0, 0, 0, 0.45),
+      inset 3px 3px 0 0 rgba(255, 255, 255, 0.16);
+  }
+  .mc-press:active {
+    box-shadow:
+      inset 4px 4px 0 0 rgba(0, 0, 0, 0.45),
+      inset -4px -4px 0 0 rgba(255, 255, 255, 0.12);
+    transform: translateY(2px);
+  }
+  .text-pixel-shadow {
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6);
+  }
+
+  /* Текстуры блоков из CSS-градиентов (без картинок, чёткие пиксели) */
+  .blk-grass {
+    background:
+      linear-gradient(#5fa739 0 0) top/100% 32% no-repeat,
+      repeating-linear-gradient(90deg, #7a5230 0 8px, #6b4626 8px 16px);
+  }
+  .blk-dirt {
+    background: repeating-linear-gradient(
+      45deg,
+      #6b4626 0 7px,
+      #7a5230 7px 14px
+    );
+  }
+  .blk-stone {
+    background: repeating-linear-gradient(
+      45deg,
+      #7d7d7d 0 7px,
+      #8c8c8c 7px 14px
+    );
+  }
+  .blk-iron {
+    background: repeating-linear-gradient(
+      45deg,
+      #9a9a9a 0 7px,
+      #d8c3a5 7px 14px
+    );
+  }
+  .blk-gold {
+    background: repeating-linear-gradient(
+      45deg,
+      #8c8c8c 0 7px,
+      #f2c14e 7px 14px
+    );
+  }
+  .blk-diamond {
+    background: repeating-linear-gradient(
+      45deg,
+      #7d7d7d 0 7px,
+      #5fd0d8 7px 14px
+    );
+  }
+  .blk-redstone {
+    background: repeating-linear-gradient(
+      45deg,
+      #7d7d7d 0 7px,
+      #d83a3a 7px 14px
+    );
+  }
+  .blk-emerald {
+    background: repeating-linear-gradient(
+      45deg,
+      #7d7d7d 0 7px,
+      #3fd97a 7px 14px
+    );
+  }
+  .blk-tnt {
+    background:
+      linear-gradient(#d83a3a 0 0) top/100% 24% no-repeat,
+      repeating-linear-gradient(0deg, #e0e0e0 0 6px, #d83a3a 6px 12px);
+  }
+
+  .scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.18) 0 2px,
+      transparent 2px 4px
+    );
   }
 }
